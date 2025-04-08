@@ -1,27 +1,27 @@
 package Arr;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
 
 public class _10807 {
+    public static void main(String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) {
+        int n = Integer.parseInt(br.readLine());
+        int count = 0;
 
-        Scanner sc = new Scanner(System.in);
+        StringTokenizer strtk = new StringTokenizer(br.readLine());
 
-        int count = 0;						 // b 와 일치할시 갯수를 올리는 변수
-        int N = sc.nextInt();
-        int[] arr = new int[N];				 // 배열 생성, 길이는 N만큼
+        int x = Integer.parseInt(br.readLine());
 
-        for(int i = 0; i < N; i++) {
-            arr[i] = sc.nextInt();			 // 배열에 입력한 정수들 넣어주기
-        }
-        int b = sc.nextInt();				 // [문제] 입력 세번째 줄 정수
-
-        for(int j = 0; j < arr.length; j++){ // 배열 길이만큼 반복문 돌리면서 변수 b 와 같은
-            if(b == arr[j]){				 // 숫자 찾기. 같으면 count 변수 1씩 증가
+        for(int i=0;i<n;i++) {
+            if(Integer.parseInt(strtk.nextToken())==x)
                 count++;
-            }
         }
         System.out.println(count);
+        br.close();
     }
 }
