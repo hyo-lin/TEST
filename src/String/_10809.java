@@ -13,10 +13,9 @@ public class _10809 {
 
         StringBuilder sb=new StringBuilder();
         for(char c='a'; c<='z'; c++){
-            sb.append(str.indexOf(c)+ " ");
+            sb.append(str.indexOf(c)+" " );
         }
         System.out.println(sb);
-
 
 
     }
