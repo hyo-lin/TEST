@@ -20,7 +20,9 @@ public class _2444 {
             }
             bw.newLine();
         }
-
+//        i = 4일 때 → 공백 1, 별 7개
+//        공백 기간을 왼->오
+//        i = 3일 때 → 공백 2, 별 5개
         for(int i=num-1; i>=0; i--){
             for(int j=0; j<num-i; j++){
                 bw.write(' ');
