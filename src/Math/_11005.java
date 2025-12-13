@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class _11005 {
+    //todo: 다른 방식으로 알아보기
     public static void main(String[] args) throws IOException {
 
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
@@ -31,6 +32,8 @@ public class _11005 {
             }
         }
         System.out.println(sb.reverse().toString());
+
+
 
         bf.close();
 
