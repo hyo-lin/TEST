@@ -8,11 +8,17 @@ public class _2292 {
     public static void main(String[] args) throws IOException{
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
         int n=Integer.parseInt(bf.readLine());
-        for(int p=0; p<n; p++){
-            if(p*(p+1)<n*2){
-
+        int count=1;
+        int range=1;
+        if(n==1){
+            System.out.println(1);
+        }else{
+            while(range<n){
+                range=range+(6*count);
+                count++;
             }
-
+            System.out.println(count);
         }
+
     }
 }
