@@ -10,10 +10,15 @@ public class _2501 {
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(bf.readLine());
         int n=Integer.parseInt(st.nextToken());
-     for(int i=1; i<n; i++){
+        int p=Integer.parseInt(st.nextToken());
+     for(int i=1; i<=n; i++){
          if(n%i==0){
-
+p--;
+         } if(p==0){
+             System.out.println(i);
+             return;
          }
-     }
+     }         System.out.println(0);
+
     }
 }
