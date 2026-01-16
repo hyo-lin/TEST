@@ -23,7 +23,7 @@ public class _2346 {
             }
         if(que.poll()>0){
             sb.append("1").append(" ");
-            que.pollLast()
+
 
         }
 
