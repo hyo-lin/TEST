@@ -12,20 +12,44 @@ public class _2346 {
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
         int N=Integer.parseInt(bf.readLine());
         StringBuilder sb=new StringBuilder();
-        Deque<Integer> que=new ArrayDeque<>();
+        Deque<int[]> que=new ArrayDeque<>();
         StringTokenizer st=new StringTokenizer(bf.readLine());
-        int count=0;
+        int[] arr=new int[N];
+        int idx=0;
 
-        for(int i=0; i<N; i++){
-
-            que.offer(Integer.parseInt(st.nextToken()));
-
-            }
-        if(que.poll()>0){
-            sb.append("1").append(" ");
-
-
+        while(st.hasMoreTokens()){
+            int num=Integer.parseInt(st.nextToken());
+            arr[idx++]=num;
         }
 
+        for(int i=1; i<N; i++){
+
+            que.offer(new int[]{arr[i],i+1});
+
+            }
+        sb.append(1).append(" ");
+
+        int move=arr[0];
+
+        for(int i=1; i<N; i++){
+            if(move>0){
+                for(int j=1; j<move; j++){
+                    que.offer(que.poll());
+                }
+                int[] move_arr=que.poll();
+                move=move_arr[0];
+                sb.append(move_arr[1]).append(" ");
+
+            }
+            else{
+                for(int j=1; j<-move;j++){
+                    que.offerFirst(que.pollLast());
+                }
+                int[] move_arr=que.pollLast();
+                move=move_arr[0];
+                sb.append(move_arr[1]).append(" ");
+            }
+        }
+        System.out.println(sb);
     }
 }
