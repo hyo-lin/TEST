@@ -7,49 +7,44 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.StringTokenizer;
 
+
 public class _2346 {
-    public static void main(String[] args)throws IOException{
-        BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-        int N=Integer.parseInt(bf.readLine());
-        StringBuilder sb=new StringBuilder();
-        Deque<int[]> que=new ArrayDeque<>();
-        StringTokenizer st=new StringTokenizer(bf.readLine());
-        int[] arr=new int[N];
-        int idx=0;
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 
-        while(st.hasMoreTokens()){
-            int num=Integer.parseInt(st.nextToken());
-            arr[idx++]=num;
+        int N = Integer.parseInt(bf.readLine());
+        StringBuilder sb = new StringBuilder();
+        Deque<int[]> que = new ArrayDeque<>();
+        StringTokenizer st = new StringTokenizer(bf.readLine());
+
+        for (int i = 1; i <=N; i++) {
+            int value = Integer.parseInt(st.nextToken());
+            que.add(new int[]{i, value});
         }
 
-        for(int i=1; i<N; i++){
+        while (!que.isEmpty()) {
+            int[] current = que.pollFirst();
+            int index = current[0]; //index
+            int moveValue = current[1]; //value
 
-            que.offer(new int[]{arr[i],i+1});
+            sb.append(index).append(" ");
 
-            }
-        sb.append(1).append(" ");
+            if (que.isEmpty()) break;
 
-        int move=arr[0];
-
-        for(int i=1; i<N; i++){
-            if(move>0){
-                for(int j=1; j<move; j++){
-                    que.offer(que.poll());
+            if (moveValue > 0) {
+                for (int i = 0; i < moveValue - 1; i++) {
+                    que.addLast(que.pollFirst());
                 }
-                int[] move_arr=que.poll();
-                move=move_arr[0];
-                sb.append(move_arr[1]).append(" ");
-
             }
+
             else{
-                for(int j=1; j<-move;j++){
-                    que.offerFirst(que.pollLast());
+                    for (int i = 0; i < -moveValue; i++) {
+                        que.addFirst(que.pollLast());
+                    }
+
                 }
-                int[] move_arr=que.pollLast();
-                move=move_arr[0];
-                sb.append(move_arr[1]).append(" ");
-            }
-        }
-        System.out.println(sb);
+                }
+
+                System.out.println(sb);
     }
 }
