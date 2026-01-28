@@ -51,7 +51,7 @@ public class _2178 {
             for(int i=0; i<4; i++){
                 int nx=cx+dx[i];
                 int ny=cy+dy[i];
-                if(nx>=0 && ny>=0 && nx<M && ny<N){
+                if(nx>=0 && ny>=0 && nx<N && ny<M){
                     if(pg[nx][ny]==1){
                         pg[nx][ny]=pg[cx][cy]+1;
                         queue.add(new int[]{nx,ny});
