@@ -10,6 +10,7 @@ public class _24444 {
     static int[] arr;
     static int count=1;
 
+
     public static void main(String[] args)throws IOException{
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st=new StringTokenizer(bf.readLine());
@@ -22,17 +23,15 @@ public class _24444 {
         arr=new int[N+1];
 
         for(int i=1; i<=N; i++){
-            gp[i]=new ArrayList<Integer>();
+            gp[i]=new ArrayList<>();
         }
 
-        for(int i=1; i<=M; i++){
+        for(int i=0; i<M; i++){
             st=new StringTokenizer(bf.readLine());
             int u=Integer.parseInt(st.nextToken());
             int v=Integer.parseInt(st.nextToken());
-
             gp[u].add(v);
             gp[v].add(u);
-
         }
 
         for(int i=1; i<=N; i++){
@@ -40,32 +39,29 @@ public class _24444 {
         }
 
         bfs(R);
-
-        StringBuilder sb=new StringBuilder();
-        for(int i=1; i<=N; i++){
-            sb.append(arr[i]).append('\n');
-        }
-        System.out.println(sb);
     }
 
-    public static void bfs(int str){
-       Queue<Integer> q=new LinkedList<>();
+    static void bfs(int node){
+        Queue<Integer> que=new LinkedList<>();
+        arr[node] = count++;
+        que.add(node);
 
-       q.add(str);
-       arr[str]=count;
-       count++;
+        while(!que.isEmpty()){
+            int curr=que.poll();
 
-       while(!q.isEmpty()){
-           int node=q.poll();
+            for(int next: gp[curr]){
+                if(arr[next]==0){
+                    arr[next]=count++;
+                    que.add(next);
+                }
+            }
+        }
 
-           for(int next: gp[node]){
-               if(arr[next]==0){
-                   q.add(next);
-                   arr[next]=count;
-                   count++;
-               }
-           }
-       }
+        StringBuilder sb=new StringBuilder();
+        for(int i=1; i<=arr.length; i++){
+            sb.append(arr[i]).append("\n");
+        }
+        System.out.println(sb);
 
     }
 }
