@@ -10,8 +10,6 @@ import java.util.StringTokenizer;
 
 public class _1697 {
     static ArrayList<Integer>[] gp;
-    static boolean[] visit;
-    static int count=1;
 
     public static void main(String[] args) throws IOException{
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
@@ -19,7 +17,6 @@ public class _1697 {
         int N=Integer.parseInt(st.nextToken());
         int K=Integer.parseInt(st.nextToken());
 
-        visit=new boolean[100001];
 
         bfs(N,K);
 
@@ -40,6 +37,7 @@ public class _1697 {
                 System.out.println(time[m] - 1);
                 return;
             }
+
             int[] nextStep = {m - 1, m + 1, m * 2};
 
             for(int next: nextStep){
@@ -49,6 +47,5 @@ public class _1697 {
                 }
             }
         }
-
     }
 }
