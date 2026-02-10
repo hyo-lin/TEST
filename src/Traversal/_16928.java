@@ -41,6 +41,7 @@ public class _16928 {
         bfs();
     }
 
+
     static void bfs(){
         Queue<Integer> que=new LinkedList<>();
         que.offer(1);
