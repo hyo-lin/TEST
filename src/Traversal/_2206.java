@@ -16,7 +16,8 @@ public class _2206 {
     static int[] dx={0,0,-1,1};
     static int[] dy={1,-1,0,0};
     static int[][] board;
-    static boolean[][] bol;
+    static boolean[][][] visited;
+
 
     public static void main(String[] args)throws IOException{
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
@@ -26,6 +27,7 @@ public class _2206 {
         M=Integer.parseInt(st.nextToken());
 
         board=new int[N][M];
+        visited = new boolean[N][M][2];
 
         for(int i=0; i<N; i++){
             String s=bf.readLine();
@@ -34,36 +36,42 @@ public class _2206 {
             }
         }
 
-        bfs();
+        System.out.println(bfs());
     }
 
     static int bfs(){
-        que.offer(new int[]{0,0,0});
+
+        que.offer(new int[]{0,0,0,1});
+        visited[0][0][0] = true;
         while(!que.isEmpty()){
-            int[] m=que.poll();
-            int st=m[0];
-            int mid=m[1];
-            int en=m[2];
+            int[] cur=que.poll();
+            int x = cur[0];
+            int y = cur[1];
+            int broken = cur[2];
+            int dist = cur[3];
+
+            if(x == N-1 && y == M-1){
+                return dist;
+            }
 
             for(int i=0; i<4; i++){
-                int px=st+dx[i];
-                int py=en+dy[i];
+                int nx = x + dx[i];
+                int ny = y + dy[i];
 
-                if(px>=0 && py>=0 && px<=N && py<=M){
-                    if(arr[px][py]==0){
-                        arr[px][py]=arr[st][en]+1;
-                        que.add(new int[]{px,py});
+                if(nx>=0 && ny>=0 && nx<N && ny<M){
+                    if(board[nx][ny] == 0 && !visited[nx][ny][broken]){
+                        visited[nx][ny][broken] = true;
+                        que.offer(new int[]{nx, ny, broken, dist+1});
+                    }
+
+                    if(board[nx][ny] == 1 && broken == 0 && !visited[nx][ny][1]){
+                        visited[nx][ny][1] = true;
+                        que.offer(new int[]{nx,ny,1,dist+1});
                     }
                 }
+
             }
         }
-        int max=0;
-        for(int i=0; i<N; i++){
-            for(int j=0; j<M; j++){
-                if(arr[i][j]==1) return -1;
-                max=Math.max(max, arr[i][j]);
-            }
-        }
-        return max-1;
+        return -1;
     }
 }
