@@ -9,7 +9,6 @@ public class _14889 {
     static int N;
     static int[][] arr;
     static int MIN=Integer.MAX_VALUE;
-    static int num;
     static boolean[] visit;
     public static void main(String[] args)throws IOException {
         BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
@@ -58,7 +57,6 @@ public class _14889 {
             }
         }
         int val=Math.abs(st-link);
-
 
         MIN = Math.min(val, MIN);
     }
