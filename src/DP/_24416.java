@@ -22,6 +22,7 @@ public class _24416 {
         System.out.println(counto+" "+countw);
     }
 
+
     static int fib(int n) {
 
         if (n == 1 || n == 2){
