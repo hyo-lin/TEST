@@ -37,6 +37,5 @@ public class _1149 {
         System.out.println(min);
 
 
-
     }
 }
