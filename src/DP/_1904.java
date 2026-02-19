@@ -8,6 +8,7 @@ public class _1904 {
     static int N;
     static int[] arr;
 
+
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(bf.readLine());
